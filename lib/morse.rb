@@ -8,7 +8,7 @@ class Translate
   end
 
   def eng_to_morse(string)
-    @array = string.split(%r{\s*})
+    @array = string.downcase.split(%r{s*})
     morse = @array.map do |letter|
       if letter == "a"
         letter = ".-"
@@ -62,14 +62,33 @@ class Translate
         letter = "-.--"
       elsif letter == "z"
         letter = "--.."
+      elsif letter == "0"
+        letter = "-----"
+      elsif letter == "1"
+        letter = ".----"
+      elsif letter == "2"
+        letter = "..---"
+      elsif letter == "3"
+        letter = "...--"
+      elsif letter == "4"
+        letter = "....-"
+      elsif letter == "5"
+        letter = "....."
+      elsif letter == "6"
+        letter = "-...."
+      elsif letter == "7"
+        letter = "--..."
+      elsif letter == "8"
+        letter = "---.."
+      elsif letter == "9"
+        letter = "----."
+      elsif letter == " "
+        letter
       else
-        letter = "0"
+        letter = "error"
       end
     end
     morse.join
   end
 
 end
-
-translator = Translate.new
-puts translator.eng_to_morse("hello world")
