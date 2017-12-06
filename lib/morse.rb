@@ -1,10 +1,15 @@
 class Translate
 
-  attr_accessor :string
-                :array
+  attr_accessor :array
 
   def initialize
     @array = nil
+  end
+
+  def from_file(file_name)
+    File.open(file_name).each do |line|
+      eng_to_morse(line)
+      end
   end
 
   def eng_to_morse(string)
